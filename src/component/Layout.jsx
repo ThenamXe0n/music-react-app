@@ -1,6 +1,7 @@
 import React from "react";
 import NavBar from "./NavBar";
 import { Navigate,Outlet } from "react-router-dom";
+import Breadcrumb from "./Breadcrumb";
 
 const Footer = () => {
   return (
@@ -10,14 +11,15 @@ const Footer = () => {
   );
 };
 
-const Layout = ({ children }) => {
+const Layout = () => {
   // console.log(childern)
   return (
     <div>
       <NavBar />
+      <Breadcrumb/>
       <main className="w-screen flex min-h-[80vh]">
       
-        <div className="w-[70%]">{children}</div>
+        <div className="w-full"><Outlet/></div>
       </main>
       <Footer />
     </div>

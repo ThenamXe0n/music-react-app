@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const MusicSection = () => {
   return (
     <div>
-      <h1 className="text-4xl text-center text-white mb-6 font-bold animate__animated animate__backInDown animate__delay-2s">
+      <h1 className="text-4xl text-center  mb-6 font-bold text-black animate__animated animate__backInDown animate__delay-2s">
         Music card
       </h1>
       <section

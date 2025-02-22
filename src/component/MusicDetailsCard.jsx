@@ -1,18 +1,30 @@
-import {useParams} from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom";
 import { MusicData } from "../data/cardData";
 
 const MusicDetailsCard = () => {
-  const {id} = useParams()
-  console.log(id)
-  let tofind = parseInt(id)
+  const { id } = useParams();
+  const navigate = useNavigate()
 
-  let songDetailData = MusicData.find((songData)=>(songData.id===tofind))
-  console.log("slectedSong",songDetailData)
+  console.log(id);
+  let tofind = parseInt(id);
 
-  let {songName,poster,singer,movieName} = songDetailData
-  
+  let songDetailData = MusicData.find((songData) => songData.id === tofind);
+  console.log("slectedSong", songDetailData);
+
+  let { songName, poster, singer, movieName } = songDetailData;
+
+  function handleBack() {
+   navigate(-1)
+  }
+
   return (
     <section className="bg-gray-800 h-screen w-screen flex items-center justify-center">
+      <button
+        onClick={handleBack}
+        className="bg-white size-9 rounded-md fixed top-5 left-8"
+      >
+        ↩
+      </button>
       <div
         id="music-card-continer "
         className="bg-black justify-evenly flex flex-col items-center h-[80vh] w-[50vw]"
