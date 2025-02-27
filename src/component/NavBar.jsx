@@ -1,16 +1,42 @@
 import React from "react";
-import { Link,NavLink } from "react-router-dom";
+import {  NavLink } from "react-router-dom";
+import { IoHome } from "react-icons/io5";
+import { FaPhone } from "react-icons/fa";
+
 
 const NavBar = () => {
   return (
     <div className="flex flex-wrap -mx-3 mb-5">
       <div className="px-3 mb-6 mx-auto w-11/12 bg-black rounded-xl">
         <div className="sm:flex items-stretch justify-between grow lg:mb-0 py-5 px-5">
-        <nav className="text-white flex items-center gap-8">
-          <NavLink className={({ isActive }) => isActive ? "text-blue-600 scale-110 font-bold":"text-red-600"} to="/"><h3 className="capitalize font-medium" >home</h3></NavLink>
-         <NavLink className={({ isActive }) => isActive ? "text-blue-600 scale-110 font-bold":"text-red-600"} to="/contact"> <h3 className="capitalize " >contact</h3></NavLink>
-          <NavLink className={({ isActive }) => isActive ? "text-blue-600 scale-110 font-bold":"text-red-600"} to="/login"><h3 className="capitalize font-medium" >login</h3></NavLink>
-        </nav>
+          <nav className="text-white flex items-center gap-8">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "flex flex-row gap-x-2 text-blue-600 scale-110 font-bold" : "flex flex-row gap-x-2 text-red-600"
+              }
+              to="/"
+            >
+            <IoHome/>
+              <h3 className="capitalize font-medium">home</h3>
+            </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "text-blue-600 scale-110 font-bold" : "text-red-600"
+              }
+              to="/contact"
+            >
+              <FaPhone/>
+              <h3 className="capitalize ">contact</h3>
+            </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "text-blue-600 scale-110 font-bold" : "text-red-600"
+              }
+              to="/login"
+            >
+              <h3 className="capitalize font-medium">login</h3>
+            </NavLink>
+          </nav>
           <div className="flex flex-col flex-wrap justify-center mb-5 mr-3 lg:mb-0">
             <span className="my-0 flex text-light font-semibold text-[1.35rem]/[1.2] flex-col justify-center">
               Profile
