@@ -4,21 +4,32 @@ import { IoCheckmarkDoneCircle } from "react-icons/io5";
 
 const TaskListCard = ({ id, isCompleted, task, taskList, setNewTaskList }) => {
   console.log("prev", taskList);
-  let list = taskList
+
   function updateTaskStatus() {
     let newTask = taskList[id];
-    if (list[id].isCompleted) {
-      newTask = { ...list[id], isCompleted: false };
+    if (taskList[id].isCompleted) {
+      newTask = { ...taskList[id], isCompleted: false };
     } else {
-      newTask = { ...list[id], isCompleted: true };
+      newTask = { ...taskList[id], isCompleted: true };
     }
-    const newTaskList = list.splice(id, 1, newTask);
-    setNewTaskList(list);
+    taskList.splice(id, 1, newTask);
+    console.log("updated task list", taskList);
+    setNewTaskList([...taskList]);
+    localStorage.setItem("tasklist",JSON.stringify([...taskList]))
     // const newTaskList = taskList.splice(id,1,{})
+  }
+
+  function deleteTask() {
+    console.log(taskList[id]);
+    console.log("index of delete item", id);
+    taskList.splice(id, 1);
+    console.log("new task list", taskList);
+    setNewTaskList([...taskList]);
+    localStorage.setItem("tasklist",JSON.stringify([...taskList]))
   }
   return (
     <div
-      key={id}
+     
       className=" flex  py-3 px-2 bg-slate-500  rounded-md items-center justify-between border-gray-300"
     >
       <div className="flex gap-2 ">
@@ -26,7 +37,7 @@ const TaskListCard = ({ id, isCompleted, task, taskList, setNewTaskList }) => {
           onClick={updateTaskStatus}
           className="size-6 bg-white cursor-pointer border-2 rounded-full"
         >
-          {list[id].isCompleted && (
+          {isCompleted && (
             <IoCheckmarkDoneCircle className="size-full text-indigo-600" />
           )}
         </div>
@@ -39,6 +50,7 @@ const TaskListCard = ({ id, isCompleted, task, taskList, setNewTaskList }) => {
         </h3>
       </div>
       <MdDeleteForever
+        onClick={deleteTask}
         className="cursor-pointer hover:scale-110"
         size={24}
         color="red"
@@ -48,8 +60,10 @@ const TaskListCard = ({ id, isCompleted, task, taskList, setNewTaskList }) => {
 };
 
 const TodoList = () => {
+  const previousTasks = JSON.parse(localStorage.getItem("tasklist"));
+  console.log("prevTasklist", previousTasks);
   const taskInputRef = useRef();
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(previousTasks); // task list
   const [newTask, setNewTask] = useState("");
   let sectionStyle = {
     height: "100vh",
@@ -68,9 +82,8 @@ const TodoList = () => {
   function addTaskToList() {
     setTasks((prev) => [...prev, newTask]);
     taskInputRef.current.value = "";
+    localStorage.setItem("tasklist", JSON.stringify([...tasks, newTask]));
   }
-  console.log(newTask);
-  console.log("tasklist", tasks);
 
   return (
     <section style={sectionStyle}>
@@ -96,13 +109,16 @@ const TodoList = () => {
         {/* -------------results ----------- */}
         <div className="flex flex-col gap-y-2" id="taskList">
           {tasks.map((task, idx) => (
-            <TaskListCard
-              taskList={tasks}
-              setNewTaskList={setTasks}
-              id={idx}
-              task={task.task}
-              isCompleted={task.isCompleted}
-            />
+            <div key={idx}>
+              {" "}
+              <TaskListCard
+                taskList={tasks}
+                setNewTaskList={setTasks}
+                id={idx}
+                task={task.task}
+                isCompleted={task.isCompleted}
+              />
+            </div>
           ))}
         </div>
       </div>

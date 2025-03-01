@@ -1,17 +1,56 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 
 const Test = () => {
+  const [count, setCount] = useState(0);
+  const [moviename, setMoviename] = useState("");
+  const [img, setImg] = useState("");
+  const [genre, setGenre] = useState("");
+  const time = " 2h 23m";
+  console.log("render");
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    let data = { moviename: moviename, img: img, genre: genre, time: time };
+    console.log(data);
+    try {
+      let response = await axios.post("http://localhost:8080/movies", data);
+      console.log(response.data);
+    } catch (error) {
+      alert(error.message);
+    }
+  }
   return (
-    <section className="border-2 overflow-hidden h-[50vh] w-[90vw] my-9 mx-auto">
-         <div className="h-[80vh] w-[90vw]  overflow-hidden">
-          <img className="h-full w-full object-cover" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKc4mQbokSIypGENWc2c4lGZYOnXQGfgPPWw&s" alt="image1" />
-        </div>
-        <div className="h-[80vh] w-[90vw] ">
-          <img className="h-full w-full object-cover" src="https://marketplace.canva.com/EAFH0H90V7Y/1/0/1600w/canva-yellow-illustrated-music-festival-poster-landscape-IuDAkfyDlZs.jpg" alt="image2" />
-        </div>
-        <div className="h-[80vh] w-[90vw] ">
-          <img className="h-full w-full object-cover" src="https://cdn.europosters.eu/image/750/posters/linkin-park-live-landscape-i6804.jpg" alt="image3" />
-        </div>
+    <section className="m-24">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col items-center gap-6"
+      >
+        <input
+          id="moviename"
+          onChange={(e) => setMoviename(e.target.value)}
+          className="p-2 border-2 rounded-md text-xl"
+          type=" text"
+          placeholder="enter movie name"
+        />
+        <input
+          id="img"
+          onChange={(e) => setImg(e.target.value)}
+          className="p-2 border-2 rounded-md text-xl"
+          type=" text"
+          placeholder="enter movie img"
+        />
+        <input
+          id="genre"
+          onChange={(e) => setGenre(e.target.value)}
+          className="p-2 border-2 rounded-md text-xl"
+          type=" text"
+          placeholder="enter movie genre"
+        />
+        <button className="p-2 bg-black rounded-md text-white ">
+          post movie
+        </button>
+      </form>
     </section>
   );
 };

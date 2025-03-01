@@ -18,7 +18,7 @@ function App() {
         <Route path="*" element={<PageNotFound404 />} />
       </Route>
       <Route path="/musicDetails/:id" element={<MusicDetailsCard />} />
-      <Route path="/test" element={<RefHook/>} />
+      <Route path="/test" element={<Test/>} />
       <Route path="/todo" element={<TodoList/>} />
     </Routes>
   );
