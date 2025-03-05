@@ -40,22 +40,11 @@
   ],
   "users": [
     {
-      "id": "9d85",
-      "name": "Nameet Mandwal",
-      "mobile": "8319850258",
-      "password": "mind@123"
-    },
-    {
-      "id": "7b30",
-      "name": "prateek",
-      "mobile": "98989889898",
-      "password": "prateek"
-    },
-    {
-      "id": "9dbb",
-      "name": "pranav",
-      "mobile": "89798789998",
-      "password": "pranav"
+      "id": "1d0c",
+      "username": "demo",
+      "password": "demo@123",
+      "emil": "demo@gmail.com",
+      "mobile": "9899889898"
     }
   ]
 }

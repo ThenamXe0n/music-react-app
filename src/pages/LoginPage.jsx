@@ -1,18 +1,20 @@
 import axios from "axios";
-import React, { useEffect, useRef } from "react";
 import Notiflix from "notiflix";
-import { useNavigate } from "react-router-dom";
+import React, { useRef, useState } from "react";
+import { BsEyeFill } from "react-icons/bs";
+import { Link, useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
-  let navigate = useNavigate();
-  const passwordRef = useRef();
+  const [showPass, setShowPass] = useState(false);
+  const navigate = useNavigate();
   const numberRef = useRef();
+  const passwordref = useRef();
 
   async function handleLogin(e) {
     e.preventDefault();
     let data = {
       mobile: numberRef.current.value,
-      password: passwordRef.current.value,
+      password: passwordref.current.value,
     };
     Notiflix.Loading.dots();
 
@@ -38,39 +40,65 @@ const LoginPage = () => {
     navigate("/");
   }
 
-  useEffect(() => {
-    if (sessionStorage.getItem("isLoggedIn") === "true") {
-      navigate("/");
-    }
-  }, []);
-
   return (
-    <section className="h-screen w-screen bg-black flex items-center justify-center">
-      <div className="h-1/2 w-1/2 flex flex-col gap-y-20 p-4 bg-slate-800 text-white border-2 rounded-md">
-        <h1 className="text-center font-bold text-4xl capitalize">
-          Login Form
-        </h1>
-        <form
-          onSubmit={handleLogin}
-          className="flex flex-col gap-y-5 justify-center w-4/5 mx-auto "
+    <section className="bg-[#000000] rounded-md shadow-lg shadow-gray-600 w-screen h-screen flex justify-center items-center">
+      <div
+        id="outter"
+        className="w-[34vw] h-fit p-2 bg-white flex justify-center items-center"
+      >
+        <div
+          id="inner"
+          className="w-[32vw] h-full py-7 bg-white border-2 border-black "
         >
-          <input
-            ref={numberRef}
-            type="text"
-            className="p-2 border rounded-lg  text-black placeholder:text-2xl"
-            placeholder="enter Mobile number"
-          />
-          <input
-            ref={passwordRef}
-            type="password"
-            className="p-2 border rounded-lg  text-black placeholder:text-2xl"
-            placeholder="enter password"
-          />
+          <h2 className="text-4xl font-bold text-center">Login Form</h2>
+          <form
+            onSubmit={handleLogin}
+            className="flex flex-col items-center w-[100%] mt-7 gap-2"
+          >
+            <div className="flex flex-col">
+              <label htmlFor="mobile">
+                Mobile Number
+                <span className="text-red-800 font-bold text-lg">*</span>
+              </label>
+              <input
+                ref={numberRef}
+                className="border-[1px] h-8 w-[20vw] rounded-sm border-black"
+                type="text"
+                id="mobile"
+              />
+            </div>
 
-          <button className="p-2 bg-black text-white rounded-sm shadow-lg">
-            Register
-          </button>
-        </form>
+            <div className="flex flex-col ">
+              <label htmlFor="Password">
+                Password
+                <span className="text-red-800 font-bold text-lg">*</span>
+              </label>
+              <div className="border-[1px]  flex items-center h-8 w-[20vw] rounded-sm border-black">
+                {" "}
+                <input
+                  ref={passwordref}
+                  className="w-11/12"
+                  type={showPass ? "text" : "password"}
+                  id="Password"
+                />
+                <BsEyeFill onClick={() => setShowPass(!showPass)} />
+              </div>
+            </div>
+
+            <div className="bg-[#feb843] w-[20vw] h-8 flex justify-center items-center rounded-sm mt-5 cursor-pointer">
+              {" "}
+              <button> Login </button>
+            </div>
+          </form>
+          <div>
+            <h3 className="font-semibold text-black text-center my-3">
+              Not Registered Yet?!{" "}
+              <Link className="text-blue-600 underline" to={"/register"}>
+                Register as User
+              </Link>
+            </h3>
+          </div>
+        </div>
       </div>
     </section>
   );

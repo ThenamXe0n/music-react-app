@@ -1,18 +1,54 @@
-
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Outlet } from "react-router-dom";
 
 import Notiflix from "notiflix";
 import LoginPage from "./pages/LoginPage";
+import Registration from "./pages/ResistrationPage";
+import CheckLogin from "./routes/auth/CheckLogin";
+import Protected from "./routes/auth/Protected";
+import Home from "./pages/Home";
+import TodoList from "./pages/TodoList";
+import Layout from "./component/Layout";
 
 function App() {
   Notiflix.Notify.init({
-    position:"center-top",
-    clickToClose:true,
-    cssAnimationStyle:"from-bottom"
-  })
+    position: "center-top",
+    clickToClose: true,
+    cssAnimationStyle: "from-bottom",
+  });
   return (
     <Routes>
-    <Route path="/login" element={<LoginPage/>}/>
+      {/* ///-------------------protected pages --------------------- */}
+      <Route
+        path="/"
+        element={
+          <Protected>
+           <Outlet/>
+          </Protected>
+        }
+      >
+        <Route index element={<Home />} />
+        <Route path="/todo" element={<TodoList />} />
+      </Route>
+
+      {/* ///////----------------------public page------------------------ */}
+      <Route path="/hi" element={<h1>hellow</h1>}/>
+
+      <Route
+        path="/login"
+        element={
+          <CheckLogin>
+            <LoginPage />
+          </CheckLogin>
+        }
+      />
+      <Route
+        path="/register"
+        element={
+          <CheckLogin>
+            <Registration />
+          </CheckLogin>
+        }
+      />
     </Routes>
   );
 }
