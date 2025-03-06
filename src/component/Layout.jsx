@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "./NavBar";
+import NavBar from "./uiComponents/NavBar";
 import { Navigate,Outlet } from "react-router-dom";
 import Breadcrumb from "./Breadcrumb";
 
@@ -15,8 +15,7 @@ const Layout = () => {
   // console.log(childern)
   return (
     <div>
-      <NavBar />
-      <Breadcrumb/>
+      <NavBar/>
       <main className="w-screen flex min-h-[80vh]">
       
         <div className="w-full"><Outlet/></div>

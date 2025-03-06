@@ -8,6 +8,7 @@ import Protected from "./routes/auth/Protected";
 import Home from "./pages/Home";
 import TodoList from "./pages/TodoList";
 import Layout from "./component/Layout";
+import AddSongPage from "./pages/AddSongPage";
 
 function App() {
   Notiflix.Notify.init({
@@ -22,12 +23,12 @@ function App() {
         path="/"
         element={
           <Protected>
-           <Outlet/>
+           <Layout/>
           </Protected>
         }
       >
         <Route index element={<Home />} />
-        <Route path="/todo" element={<TodoList />} />
+        <Route path="/add-song" element={<AddSongPage/>}/>
       </Route>
 
       {/* ///////----------------------public page------------------------ */}

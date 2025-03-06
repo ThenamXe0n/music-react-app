@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import NavBar from "../component/NavBar";
+
 import MusicSection from "../component/sections/MusicSection";
-import CustomMusicCard from "../component/CustomMusicCard";
-import Breadcrumb from "../component/Breadcrumb";
 import MovieSection from "../component/sections/MovieSection";
 import SlidingSection from "../component/Slider";
 
@@ -15,8 +13,7 @@ const Home = () => {
   }
 
   return (
-    <div>
-      <SlidingSection/>
+    <div className="bg-slate-600 min-h-screen">
       <div className="flex items-center gap-x-4 border border-gray-500  py-2 px-1">
         <div
           onClick={handleTabChange}
