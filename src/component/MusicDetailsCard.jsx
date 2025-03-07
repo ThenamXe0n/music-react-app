@@ -1,21 +1,37 @@
+import axios from "axios";
+import { useEffect, useState,useRef } from "react";
+import { BiPlayCircle } from "react-icons/bi";
+import { FaRegCirclePause } from "react-icons/fa6";
 import { useNavigate, useParams } from "react-router-dom";
-import { MusicData } from "../data/cardData";
 
 const MusicDetailsCard = () => {
+  const audioRef = useRef()
   const { id } = useParams();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [musicData, setMusicData] = useState([]);
+  const [playing,setPlaying]=useState(false)
+  async function getSongs() {
+    try {
+      const response = await axios.get("http://localhost:8080/songs");
+      console.log("res", response.data);
+      setMusicData(response.data);
+    } catch (error) {
+      alert(error.message);
+    }
+  }
 
-  console.log(id);
-  let tofind = parseInt(id);
+  useEffect(() => {
+    getSongs();
+  }, []);
 
-  let songDetailData = MusicData.find((songData) => songData.id === tofind);
-  console.log("slectedSong", songDetailData);
-
-  let { songName, poster, singer, movieName } = songDetailData;
+  let selectedMusic = musicData.find((item) => item.id == id);
+  console.log("selected",selectedMusic)
 
   function handleBack() {
-   navigate(-1)
+    navigate(-1);
   }
+
+  // console.log("url",selectedMusic?.songSrc)
 
   return (
     <section className="bg-gray-800 h-screen w-screen flex items-center justify-center">
@@ -32,19 +48,21 @@ const MusicDetailsCard = () => {
         <div className="border border-red-500 h-80 w-80">
           <img
             className="h-full w-full object-cover"
-            src={poster}
-            alt={songName}
+            src={selectedMusic?.poster}
+            alt={selectedMusic?.songName}
           />
         </div>
         <h1 className="text-2xl font-bold text-pink-700 capitalize">
-          {songName}
+          {selectedMusic?.songName}
         </h1>
         <h4 className="text-xl font-medium text-gray-700 capitalize">
-          {singer}
+          {selectedMusic?.singer}
         </h4>
         <p>
           <strong className="text-white">Movie : </strong>{" "}
-          <span className="text-indigo-600 font-bold">{movieName}</span>
+          <span className="text-indigo-600 font-bold">
+            {selectedMusic?.movieName}
+          </span>
         </p>
 
         {/* //-------------controll section------------- */}
@@ -76,6 +94,16 @@ const MusicDetailsCard = () => {
             <span> 3:35 </span>
           </div>
         </div>
+        {!playing && <div onClick={()=>{audioRef.current.play();setPlaying(true)}} className="text-black flex items-center justify-center rounded-full bg-white size-16 ">
+          <BiPlayCircle size={48} />
+        </div>}
+        {playing && <div onClick={()=>{audioRef.current.pause();setPlaying(false)}} className="text-black flex items-center justify-center rounded-full bg-white size-16 ">
+          <FaRegCirclePause size={48} />
+        </div>}
+
+        {selectedMusic?.songSrc &&<audio ref={audioRef}  >
+          <source src={selectedMusic.songSrc} type="audio/mp3" />
+        </audio>}
       </div>
     </section>
   );

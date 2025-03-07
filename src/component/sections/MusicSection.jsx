@@ -30,7 +30,7 @@ useEffect(() => {
       >
         {musicData.map((song, idx) => (
           <div key={idx}>
-            <Link to={`/musicDetails/${song.id}`} ><MusicCard
+            <Link to={`/song/${song.id}`} ><MusicCard
               songName={song.songName}
               singer={song.singer}
               poster={song.poster}

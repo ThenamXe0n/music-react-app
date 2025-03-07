@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import TodoList from "./pages/TodoList";
 import Layout from "./component/Layout";
 import AddSongPage from "./pages/AddSongPage";
+import MusicDetailsCard from "./component/MusicDetailsCard";
 
 function App() {
   Notiflix.Notify.init({
@@ -29,6 +30,7 @@ function App() {
       >
         <Route index element={<Home />} />
         <Route path="/add-song" element={<AddSongPage/>}/>
+        <Route path="/song/:id" element={<MusicDetailsCard/>}/>
       </Route>
 
       {/* ///////----------------------public page------------------------ */}

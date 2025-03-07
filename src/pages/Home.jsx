@@ -5,7 +5,7 @@ import MovieSection from "../component/sections/MovieSection";
 import SlidingSection from "../component/Slider";
 
 const Home = () => {
-  const [contentToShow, setContentToShow] = useState("movies");
+  const [contentToShow, setContentToShow] = useState("musics");
 
   function handleTabChange(e) {
     // console.log(e.target.innerText);

@@ -53,7 +53,8 @@
       "singer": "sunidhi chauhan",
       "poster": "https://m.media-amazon.com/images/M/MV5BZjI2NGQxMGMtYzQ5Mi00NTBjLWJhYzktMjE2ZDkxOTU3YWZjXkEyXkFqcGc@._V1_QL75_UX480_.jpg",
       "songName": "aangaron",
-      "movieName": "pushpa"
+      "movieName": "pushpa",
+      "songSrc":"/assets/musics/Angaaron.mp3"
     },
     {
       "id": 2,
