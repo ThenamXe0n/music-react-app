@@ -4,31 +4,36 @@
       "moviename": "Old guard",
       "img": "https://w0.peakpx.com/wallpaper/611/61/HD-wallpaper-john-wick-john-wick-chapter-3-keanu-reeves-movie-poster-vertical.jpg",
       "time": " 1h 52m",
-      "genre": "Action/Thriler"
+      "genre": "Action/Thriler",
+      "id": "f5cc"
     },
     {
       "moviename": "parallel",
       "time": "2h 23m",
       "img": "https://media2.firstshowing.net/firstshowing/img11/ParallelPosterBluecolormainimg5991.jpg",
-      "genre": "Action/war"
+      "genre": "Action/war",
+      "id": "a9c6"
     },
     {
       "moviename": "Balck Adam",
       "img": "https://images.thedirect.com/media/photos/posd1_1.jpg",
       "time": "1h 55m",
-      "genre": "Adventure/Fantasy"
+      "genre": "Adventure/Fantasy",
+      "id": "97a4"
     },
     {
       "moviename": "Sita Ramam",
       "img": "./assets/sitaRamamPaster.jpg",
       "time": "2h 18m",
-      "genre": "Romance/Drama"
+      "genre": "Romance/Drama",
+      "id": "a1f8"
     },
     {
       "moviename": "chava",
       "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkD4P6J7ijbnizqAYcEPgOVytZFjrq1izW8Q&s",
       "time": "2h 18m",
-      "genre": "biopic"
+      "genre": "biopic",
+      "id": "dd7a"
     },
     {
       "id": "d674",
@@ -49,26 +54,25 @@
   ],
   "songs": [
     {
-      "id": 1,
+      "id": "1",
       "singer": "sunidhi chauhan",
       "poster": "https://m.media-amazon.com/images/M/MV5BZjI2NGQxMGMtYzQ5Mi00NTBjLWJhYzktMjE2ZDkxOTU3YWZjXkEyXkFqcGc@._V1_QL75_UX480_.jpg",
       "songName": "aangaron",
       "movieName": "pushpa",
-      "songSrc":"/assets/musics/Angaaron.mp3"
+      "songSrc": "/assets/musics/Angaaron.mp3"
     },
     {
-      "id": 2,
+      "id": "2",
       "singer": "arijit sing",
       "poster": "https://i.scdn.co/image/ab67616d0000b273912f331969e4bd6aa77e9a9a",
       "songName": "sataranga",
       "movieName": "animal"
     },
     {
-      "id": "44a6",
-      "songName": "TU Jo Mila",
+      "songName": "dil ibadat",
       "singer": "kk",
-      "poster": "https://rollingstoneindia.com/wp-content/uploads/2022/06/KK-11.jpg",
-      "movieName": "bajrangi bhaijaan"
+      "poster": "https://i1.sndcdn.com/artworks-000112068978-pz2uyb-t500x500.jpg",
+      "id": "44a6"
     },
     {
       "id": "fd37",

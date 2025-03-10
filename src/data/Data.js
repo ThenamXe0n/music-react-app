@@ -24,4 +24,9 @@ export const navBarData = [
     href: "/add-song",
     icon: <PiPlusBold size={24} />,
   },
+  {
+    title: "update",
+    href: "/update-song",
+    icon: <PiPlusBold size={24} />,
+  },
 ];

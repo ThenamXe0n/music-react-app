@@ -1,26 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import MusicCard from "../MusicCard";
 import { MusicData } from "../../data/cardData";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { GlobalStatesContext } from "../../App";
 
-const MusicSection = () => {
-const [musicData,setMusicData] = useState([])
-async function getSongs() {
-  try {
-    const response = await axios.get("http://localhost:8080/songs");
-    setMusicData(response.data);
-  } catch (error) {
-    alert(error.message);
+
+const MusicSection = ({ isEdit, setIsEdit }) => {
+  const states = useContext(GlobalStatesContext);
+  console.log("from music section",states);
+  let {setTheme} = states
+  const [musicData, setMusicData] = useState([]);
+  async function getSongs() {
+    try {
+      const response = await axios.get("http://localhost:8080/songs");
+      setMusicData(response.data);
+    } catch (error) {
+      alert(error.message);
+    }
   }
-}
 
-useEffect(() => {
-  getSongs();
-}, []);
+  useEffect(() => {
+    getSongs();
+  }, []);
 
   return (
     <div className="mt-5">
+    <button onClick={()=>setTheme("green")} className="p-4 bg-red-600 text-white">change theme</button>
       <h1 className="text-4xl text-center  mb-6 font-bold text-black animate__animated animate__backInDown animate__delay-2s">
         Music card
       </h1>
@@ -30,12 +36,17 @@ useEffect(() => {
       >
         {musicData.map((song, idx) => (
           <div key={idx}>
-            <Link to={`/song/${song.id}`} ><MusicCard
+            <MusicCard
+              musicData={musicData}
+              setMusicData={setMusicData}
+              id={song.id}
+              isEdit={isEdit}
+              setIsEdit={setIsEdit}
               songName={song.songName}
               singer={song.singer}
               poster={song.poster}
               movieName={song.movieName}
-            /></Link>
+            />
           </div>
         ))}
       </section>

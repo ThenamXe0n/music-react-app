@@ -8,13 +8,13 @@ const MusicDetailsCard = () => {
   const audioRef = useRef()
   const { id } = useParams();
   const navigate = useNavigate();
-  const [musicData, setMusicData] = useState([]);
+  const [selectedMusic, setSelectedMusic] = useState([]);
   const [playing,setPlaying]=useState(false)
   async function getSongs() {
     try {
-      const response = await axios.get("http://localhost:8080/songs");
+      const response = await axios.get(`http://localhost:8080/songs/${id}`);
       console.log("res", response.data);
-      setMusicData(response.data);
+      setSelectedMusic(response.data);
     } catch (error) {
       alert(error.message);
     }
@@ -24,8 +24,6 @@ const MusicDetailsCard = () => {
     getSongs();
   }, []);
 
-  let selectedMusic = musicData.find((item) => item.id == id);
-  console.log("selected",selectedMusic)
 
   function handleBack() {
     navigate(-1);
