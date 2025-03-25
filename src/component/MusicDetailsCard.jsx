@@ -2,27 +2,20 @@ import axios from "axios";
 import { useEffect, useState,useRef } from "react";
 import { BiPlayCircle } from "react-icons/bi";
 import { FaRegCirclePause } from "react-icons/fa6";
+import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 
 const MusicDetailsCard = () => {
   const audioRef = useRef()
   const { id } = useParams();
   const navigate = useNavigate();
-  const [selectedMusic, setSelectedMusic] = useState([]);
-  const [playing,setPlaying]=useState(false)
-  async function getSongs() {
-    try {
-      const response = await axios.get(`http://localhost:8080/songs/${id}`);
-      console.log("res", response.data);
-      setSelectedMusic(response.data);
-    } catch (error) {
-      alert(error.message);
-    }
-  }
+  const selectedMusic = useSelector((state)=>state.musicSlice.selectedMusic
 
-  useEffect(() => {
-    getSongs();
-  }, []);
+)
+  const [playing,setPlaying]=useState(false)
+  
+
+ 
 
 
   function handleBack() {

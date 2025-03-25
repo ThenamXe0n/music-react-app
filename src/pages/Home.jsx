@@ -1,22 +1,25 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import MusicSection from "../component/sections/MusicSection";
 import MovieSection from "../component/sections/MovieSection";
 import SlidingSection from "../component/Slider";
 import { GlobalStatesContext } from "../App";
+import { useDispatch } from "react-redux";
+import { addMusic, getMusicAsync } from "../redux/music/musicSlice";
 
 const Home = () => {
-  const {contentToShow, setContentToShow,isEdit, setIsEdit} = useContext(GlobalStatesContext);
-  
+  const { contentToShow, setContentToShow, isEdit, setIsEdit } =
+    useContext(GlobalStatesContext);
 
   function handleTabChange(e) {
     // console.log(e.target.innerText);
     setContentToShow(e.target.innerText.toLowerCase());
-
-
-  
-
   }
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getMusicAsync());
+  }, []);
 
   return (
     <div className="bg-slate-600 min-h-screen">
@@ -41,23 +44,28 @@ const Home = () => {
         >
           Movies
         </div>
-       {!isEdit ? (<div
-        onClick={()=>setIsEdit(true)}
-          className="
+        {!isEdit ? (
+          <div
+            onClick={() => setIsEdit(true)}
+            className="
              border-green-600 bg-amber-700 rounded-xl  border-2 px-8 py-2 text-white "
-        >
-          Edit
-        </div>):
-       ( <div
-        onClick={()=>setIsEdit(false)}
-          className="
+          >
+            Edit
+          </div>
+        ) : (
+          <div
+            onClick={() => setIsEdit(false)}
+            className="
              border-green-600 bg-amber-700 rounded-xl  border-2 px-8 py-2 text-white "
-        >
-          Cancel Edit
-        </div>)}
+          >
+            Cancel Edit
+          </div>
+        )}
       </div>
 
-      {contentToShow === "musics" && <MusicSection  isEdit={isEdit} setIsEdit={setIsEdit}/>}
+      {contentToShow === "musics" && (
+        <MusicSection isEdit={isEdit} setIsEdit={setIsEdit} />
+      )}
       {contentToShow === "movies" && <MovieSection />}
     </div>
   );

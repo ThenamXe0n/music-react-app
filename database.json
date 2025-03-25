@@ -41,6 +41,13 @@
       "img": "https://images.hindustantimes.com/rf/image_size_800x600/HT/p1/2011/09/09/Incoming/Pictures/743490_Wallpaper2.jpg",
       "genre": "action",
       "time": " 2h 23m"
+    },
+    {
+      "id": "bdb9",
+      "moviename": "Jolly llb 3",
+      "time": "2h 30m",
+      "img": "https://m.media-amazon.com/images/M/MV5BMWQ4YzZkYTYtZDY4Mi00MTAzLTlmOWItZjEzZjE5MWJmNGI1XkEyXkFqcGc@._V1_.jpg",
+      "genre": "crime/comedy"
     }
   ],
   "users": [
@@ -67,19 +74,6 @@
       "poster": "https://i.scdn.co/image/ab67616d0000b273912f331969e4bd6aa77e9a9a",
       "songName": "sataranga",
       "movieName": "animal"
-    },
-    {
-      "songName": "dil ibadat",
-      "singer": "kk",
-      "poster": "https://i1.sndcdn.com/artworks-000112068978-pz2uyb-t500x500.jpg",
-      "id": "44a6"
-    },
-    {
-      "id": "fd37",
-      "songName": "dil ibadat",
-      "singer": "kk",
-      "poster": "https://m.media-amazon.com/images/M/MV5BODFlZjU2YzUtYjRjMy00YTczLTgyMjUtMDNkY2RiNzA0ZmE0XkEyXkFqcGc@._V1_.jpg",
-      "movieName": "tum mile"
     }
   ]
 }

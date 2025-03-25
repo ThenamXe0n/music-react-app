@@ -2,21 +2,17 @@ import React, { useEffect, useState } from "react";
 import MovieCard from "../movieCard/MovieCard";
 import { movieData } from "../../data/Data";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { getMovieAsync } from "../../redux/movie/movieSlice";
 
 const MovieSection = () => {
-  const [movies, setMovies] = useState([]);
-  async function getMovies() {
-    try {
-      const response = await axios.get("http://localhost:8080/movies");
-      setMovies(response.data);
-    } catch (error) {
-      alert(error.message);
-    }
-  }
+  const dispatch = useDispatch();
+  const movies = useSelector((state) => state.movieSlice.allMovies);
+  console.log("redux movie", movies);
 
   useEffect(() => {
-    getMovies();
-  }, []);
+    dispatch(getMovieAsync());
+  }, [dispatch]);
 
   return (
     <div className="mt-5">

@@ -25,6 +25,11 @@ export const navBarData = [
     icon: <PiPlusBold size={24} />,
   },
   {
+    title: "Add Movie",
+    href: "/add-movie",
+    icon: <PiPlusBold size={24} />,
+  },
+  {
     title: "update",
     href: "/update-song",
     icon: <PiPlusBold size={24} />,
