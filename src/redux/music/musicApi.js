@@ -20,3 +20,17 @@ export const deleteMusicApi = async (id) => {
     Notiflix.Notify.failure(error.message);
   }
 };
+
+export const updateMusicDataApi = async (updateInfo) => {
+  try {
+    const response = await axios.patch(
+      `http://localhost:8080/songs/${updateInfo.id}`,
+      updateInfo.data
+    );
+    Notiflix.Notify.success(`${response.data.songName} with id : ${response.data.id} has been updated successfully `)
+    return response.data;
+  } catch (error) {
+    Notiflix.Notify.failure(error.message);
+    return { status: false, message: error.message };
+  }
+};

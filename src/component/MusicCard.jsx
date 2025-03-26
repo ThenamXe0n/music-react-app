@@ -1,4 +1,4 @@
-import { BiTrash } from "react-icons/bi";
+import { BiEdit, BiTrash } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { deleteSong } from "../api/apiFetch";
 import { Notify } from "notiflix";
@@ -8,10 +8,11 @@ import { addselectedMusic, deleteMusicAsync } from "../redux/music/musicSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "./uiComponents/Loader";
 
-const MusicCard = ({ id, songName, singer, poster, movieName, isEdit }) => {
+const MusicCard = ({ id, songName, singer, poster, movieName, isEdit,openUpdateForm }) => {
   const { theme, setTheme } = useContext(GlobalStatesContext);
   const dispatch = useDispatch();
   const { isLoading } = useSelector((state) => state.musicSlice);
+
   const handleDelete = () => {
     let ask = window.confirm("are you sure to delete song?");
     if (ask) {
@@ -30,12 +31,21 @@ const MusicCard = ({ id, songName, singer, poster, movieName, isEdit }) => {
           className="w-full max-w-[320px] min-w-[320px] bg-slate-600 shadow-md rounded-lg overflow-hidden dark:bg-zinc-900"
         >
           {isEdit && (
-            <div
-              onClick={handleDelete}
-              className="flex items-center text-red-600 w-fit float-end bg-white mt-2 justify-end p-1 rounded-xl mr-1 hover:scale-95 duration-300 hover:bg-red-600 hover:text-white "
-            >
-              <BiTrash size={24} />
-            </div>
+            <>
+              {" "}
+              <div
+                onClick={handleDelete}
+                className="flex items-center text-red-600 w-fit float-end bg-white mt-2 justify-end p-1 rounded-xl mr-1 hover:scale-95 duration-300 hover:bg-red-600 hover:text-white "
+              >
+                <BiTrash size={24} />
+              </div>
+              <div
+                onClick={openUpdateForm}
+                className="flex items-center text-blue-600 w-fit float-end bg-white mt-2 justify-end p-1 rounded-xl mr-1 hover:scale-95 duration-300 hover:bg-blue-600 hover:text-white "
+              >
+                <BiEdit size={24} />
+              </div>
+            </>
           )}
           <Link
             onClick={() => {

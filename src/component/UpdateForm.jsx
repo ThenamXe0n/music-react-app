@@ -4,9 +4,12 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { BsPlusCircle } from "react-icons/bs";
 import { updateData } from "../api/apiFetch";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {  updateMusicDataApi } from "../redux/music/musicApi";
+import { updateMusicDataAsync } from "../redux/music/musicSlice";
 
-const UpdateForm = () => {
+const UpdateForm = ({songData}) => {
+  const dispatch = useDispatch()
   const {
     register,
     handleSubmit,
@@ -15,18 +18,20 @@ const UpdateForm = () => {
   } = useForm();
 
   const music = useSelector((state)=>state.musicSlice.allMusic)
-  console.log("all music",music)
+
 
   const handleUpdateSong=(data)=>{
     console.log(data);
-    updateData("44a6",{poster:data.poster,songName:data.songName})
+    // console.log("songId",songData.id)
+    // updateData("44a6",{poster:data.poster,songName:data.songName})
+   dispatch( updateMusicDataAsync({id:songData.id,data:data}))
 
   }
 
   return (
     <form
       onSubmit={handleSubmit(handleUpdateSong)}
-      className="min-w-[60vw] h-fit p-11 border-2"
+      className="min-w-[60vw] bg-blue-700 h-fit p-11 border-2"
     >
       <div className="flex items-center gap-4 text-white font-bold">
         <BsPlusCircle size={24} />  update  Song
@@ -41,6 +46,7 @@ const UpdateForm = () => {
             {...register("songName", {
               required: "*must fill song name to add song",
             })}
+            defaultValue={songData?.songName}
             className="bg-slate-500 rounded-md p-3"
             type="text"
             placeholder="enter song name"
@@ -56,6 +62,7 @@ const UpdateForm = () => {
           <input
             {...register("singer")}
             className="bg-slate-500 rounded-md p-3"
+            defaultValue={songData?.singer}
             type="text"
             placeholder="enter singer or artist name"
           />
@@ -70,6 +77,7 @@ const UpdateForm = () => {
           <input
             {...register("poster")}
             className="bg-slate-500 rounded-md p-3"
+            defaultValue={songData?.poster}
             type="url"
             placeholder="enter song poster url"
           />
@@ -82,6 +90,7 @@ const UpdateForm = () => {
           <input
             {...register("movieName")}
             className="bg-slate-500 rounded-md p-3"
+            defaultValue={songData?.movieName}
             type="text"
             placeholder="enter song album or movie name"
           />

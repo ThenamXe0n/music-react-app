@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { deleteMusicApi, getSongsApi } from "./musicApi";
+import { deleteMusicApi, getSongsApi, updateMusicDataApi } from "./musicApi";
 import Notiflix from "notiflix";
 
 const initialState = {
@@ -18,6 +18,14 @@ export const deleteMusicAsync = createAsyncThunk(
   "music/delete music",
   async (id) => {
     const response = await deleteMusicApi(id);
+    return response;
+  }
+);
+
+export const updateMusicDataAsync = createAsyncThunk(
+  "music/update music",
+  async (updateInfo) => {
+    const response = await updateMusicDataApi(updateInfo);
     return response;
   }
 );
@@ -61,6 +69,14 @@ const musicSlice = createSlice({
           (music) => music?.id !== action.payload?.id
         );
         state.allMusic = newData;
+      })
+      .addCase(updateMusicDataAsync.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateMusicDataAsync.fulfilled, (state, action) => {
+        state.isLoading = false;
+        let idx = state.allMusic.findIndex((item)=>{return item.id===action.payload.id})
+        state.allMusic[idx] = action.payload
       });
   },
 });
