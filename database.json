@@ -38,6 +38,7 @@
     {
       "id": "d674",
       "moviename": "Ra-one",
+      "videoUrl": "https://www.youtube.com/embed/pBud7byobX0?si=0mADlyqqWTdrY4cp",
       "img": "https://images.hindustantimes.com/rf/image_size_800x600/HT/p1/2011/09/09/Incoming/Pictures/743490_Wallpaper2.jpg",
       "genre": "action",
       "time": " 2h 23m"
@@ -45,9 +46,18 @@
     {
       "id": "bdb9",
       "moviename": "Jolly llb 3",
+      "videoUrl": "https://www.youtube.com/embed/0LuaBbJftMI?si=uXs5vWW2stZx28BS",
       "time": "2h 30m",
       "img": "https://m.media-amazon.com/images/M/MV5BMWQ4YzZkYTYtZDY4Mi00MTAzLTlmOWItZjEzZjE5MWJmNGI1XkEyXkFqcGc@._V1_.jpg",
       "genre": "crime/comedy"
+    },
+    {
+      "id": "5068",
+      "moviename": "The Diplomat",
+      "time": "2h 30m",
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-7jrsp3Wp0evzCMbYHpiiF6blMZAQjmtypQ&s",
+      "genre": "action",
+      "videoUrl": "https://www.youtube.com/embed/CnEOLuCojY0?si=ELdRMQ4mv_U41mH4"
     }
   ],
   "users": [

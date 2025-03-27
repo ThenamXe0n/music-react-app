@@ -5,8 +5,8 @@ function MovieCard({ moviename, genre, time, img }) {
     <div data-aos="zoom-in-left">
       {
         <>
-          <div id="movieCard">
-            <img height={400} src={img} alt="pushpaimg" />
+          <div  id="movieCard">
+            <img className="object-cover h-full w-full" height={400} src={img} alt="pushpaimg" />
           </div>
           <div id="text_box">
             <h3 id="movie_name"> {moviename}</h3>

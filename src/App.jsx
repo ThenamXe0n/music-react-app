@@ -15,6 +15,7 @@ import ContextPage from "./pages/ContextPage";
 import { DataContextApi } from "./context/DataContext";
 import { createContext, useState } from "react";
 import AddMoviePage from "./pages/AddMoviePage";
+import MovieDetailsCard from "./component/movieCard/MovieDetailsCard";
 
 export const GlobalStatesContext = createContext();
 
@@ -57,6 +58,7 @@ function App() {
           <Route path="/add-movie" element={<AddMoviePage/>} />
           <Route path="/update-song" element={<UpdateSongPage />} />
           <Route path="/song/:id" element={<MusicDetailsCard />} />
+          <Route path="/movie/:id" element={<MovieDetailsCard/>}/>
         </Route>
 
         {/* ///////----------------------public page------------------------ */}

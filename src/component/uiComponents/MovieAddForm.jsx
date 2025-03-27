@@ -74,6 +74,18 @@ const MovieAddForm = () => {
         </div>
         <div className="flex flex-col gap-y-2">
           <label className="text-white capitalize font-extrabold">
+            Video URL (iframe)
+          </label>
+          <input
+            {...register("videoUrl")}
+            className="bg-slate-500 rounded-md p-3"
+            type="url"
+            placeholder="enter movie iframe url"
+          />
+          <p>{errors.img?.message}</p>
+        </div>
+        <div className="flex flex-col gap-y-2">
+          <label className="text-white capitalize font-extrabold">
             movie genre
           </label>
           <input

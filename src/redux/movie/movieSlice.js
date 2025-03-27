@@ -3,6 +3,7 @@ import { addMovieApi, getMovieApi } from "./movieApi";
 
 const initialState = {
   allMovies: [],
+  selectedMovie:{},
   isLoading: true,
 };
 
@@ -22,7 +23,18 @@ export const addMovieAsync = createAsyncThunk(
 const movieSlice = createSlice({
   name: "movie",
   initialState,
-  reducers: {},
+  reducers: {
+     addselectedMovie: (state, action) => {
+          let selected = state.allMovies.find(
+            (movie) => movie.id === action.payload
+          );
+          if (!selected) {
+            Notiflix.Notify.failure("no such movie found");
+            return;
+          }
+          state.selectedMovie = selected;
+        },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getMovieAsync.pending, (state) => {
@@ -41,5 +53,7 @@ const movieSlice = createSlice({
       });
   },
 });
+
+export const {addselectedMovie} = movieSlice.actions
 
 export default movieSlice.reducer;
