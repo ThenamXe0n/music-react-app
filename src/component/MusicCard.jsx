@@ -28,7 +28,7 @@ const MusicCard = ({ id, songName, singer, poster, movieName, isEdit,openUpdateF
       ) : (
         <div
           data-aos="zoom-in-left"
-          className="w-full max-w-[320px] min-w-[320px] bg-slate-600 shadow-md rounded-lg overflow-hidden dark:bg-zinc-900"
+          className="w-full max-w-[320px] min-w-[320px] bg-black shadow-md rounded-lg overflow-hidden dark:bg-zinc-900"
         >
           {isEdit && (
             <>

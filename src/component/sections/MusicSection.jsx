@@ -29,7 +29,7 @@ const MusicSection = ({ isEdit, setIsEdit }) => {
       </h1>
 
       <section
-        className="grid grid-cols-3 gap-5 justify-items-center"
+        className="grid grid-cols-3 gap-5 mx-auto justify-items-center"
         id="card-container"
       >
         {musicData.map((song, idx) => (

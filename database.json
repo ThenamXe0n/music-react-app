@@ -58,6 +58,30 @@
       "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-7jrsp3Wp0evzCMbYHpiiF6blMZAQjmtypQ&s",
       "genre": "action",
       "videoUrl": "https://www.youtube.com/embed/CnEOLuCojY0?si=ELdRMQ4mv_U41mH4"
+    },
+    {
+      "id": "ac23",
+      "moviename": "hero",
+      "time": "2h",
+      "img": "http://i.pinimg.com/564x/76/48/f4/7648f496d3fa7d0c7ff28d142d01c50b.jpg",
+      "videoUrl": "https://www.youtube.com/embed/DWKLG4KqP3k?si=R-EX593bow7I3BV0",
+      "genre": "Action/Romance"
+    },
+    {
+      "id": "16a8",
+      "moviename": "bloody daddy",
+      "time": "3h",
+      "img": "https://images.mid-day.com/images/images/2023/may/bloddydaddmainposter_d.jpg",
+      "videoUrl": "https://www.youtube.com/embed/A2MknhOYwdk?si=QoZAZrd7JuNjw-6W",
+      "genre": "action"
+    },
+    {
+      "id": "7fa3",
+      "moviename": "sdfsdfsdf",
+      "time": "2",
+      "img": "https://assetscdn1.paytm.com/images/cinema/Crazxy--Gallery-1982a330-ed16-11ef-8b9d-63daeae479d9.jpg",
+      "videoUrl": "https://www.youtube.com/embed/sHfnlnyjD-E?si=iO4iNMOArPwgvIol",
+      "genre": "action"
     }
   ],
   "users": [
@@ -84,6 +108,14 @@
       "poster": "https://m.media-amazon.com/images/M/MV5BOWUzYWFmZGMtZTYwYi00ZWM0LTljNzgtYjQ3MzhjYThhYzE4XkEyXkFqcGc@._V1_.jpg",
       "songName": "sataranga",
       "movieName": "animal"
+    },
+    {
+      "id": "bda4",
+      "songName": "Roots",
+      "singer": "yash bhai mandloi",
+      "poster": "https://pagalnew.com/coverimages/Roots-Bintu-Pabra-500-500.jpg",
+      "movieName": "roots",
+      "songSrc": "/assets/musics/Roots Bintu Pabra 128 Kbps.mp3"
     }
   ]
 }
